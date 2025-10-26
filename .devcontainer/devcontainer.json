@@ -1,0 +1,19 @@
+{
+  "name": "doghouse-dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" }
+  },
+  "containerEnv": {
+    "DD_API_KEY": "${localEnv:DD_API_KEY}",
+    "DD_SITE": "${localEnv:DD_SITE}"
+  },
+  "postCreateCommand": "sudo bash scripts/bootstrap.sh",
+  "customizations": {
+    "vscode": {
+      "settings": { "terminal.integrated.defaultProfile.linux": "bash" },
+      "extensions": ["ms-azuretools.vscode-docker", "golang.go", "redhat.vscode-yaml"]
+    }
+  }
+}
